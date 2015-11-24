@@ -1,2 +1,2 @@
 # thinder
-Colin was here.
+Colin & Kelin were here.
