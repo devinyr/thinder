@@ -6,4 +6,5 @@ urlpatterns = patterns ('',
 	url(r'^', include("apps.login.urls")),
 	url(r"^events/", include("apps.events.urls")),
     url(r'^admin/', admin.site.urls),
+	url(r'^payments/', include('apps.payment.urls'))
 )

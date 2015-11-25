@@ -9,6 +9,7 @@
 	<body>
     <div id="container">
       <div class="info">
+        <a class="btn header" href="/events/my_events">Go to Events</a>
         <h1>{{request.session.event_name}}</h1>
         {% for something in event.objects %}
         <br>
