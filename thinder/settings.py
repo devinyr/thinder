@@ -27,7 +27,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
+STRIPE_PUBLIC_KEY = "pk_test_HDHBkLdw2uY2cUFOgm8ZLFrL"
+STRIPE_SECRET_KEY = "sk_test_DHMhjBGDCy6RBbT49B1xlMdw"
 # Application definition
 
 INSTALLED_APPS = [
@@ -39,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'social.apps.django_app.default',
     'apps.login',
-    'apps.events'
+    'apps.events',
+    'apps.payment',
 ]
 
 MIDDLEWARE_CLASSES = [

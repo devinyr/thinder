@@ -2,7 +2,7 @@ from django.conf.urls import include, url, patterns
 from apps.events import views
 
 urlpatterns = patterns ('',
-	url(r'^$', views.index, name="events_index"),
+	url(r'^$', views.redirected_home, name="events_index"),
 	url(r'^show/', views.show, name="show"),
 	url(r'^add', views.add, name="add"),
 	url(r'^city/', views.get_city, name="city"),
