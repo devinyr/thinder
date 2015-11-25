@@ -1,10 +1,14 @@
 <html>
 	<head>
 		<title>Thinder</title>
+		{% load staticfiles %}
+		<link rel="stylesheet" type="text/css" href="{% static 'events/css/style.css'%}">
 	</head>
 	<body>
-		<h1>Users will be able to login here!</h1>
-		<!-- <a href="/login/google-oauth2">Login with Google</a> -->
-		<a href="{% url 'social:begin' 'google-oauth2' %}">Login with Google</a>
+		<div id="container">
+			<h1>Welcome to Thinder!</h1>
+			<br><br>
+			<a class="btn" href="{% url 'social:begin' 'google-oauth2' %}">Login with Google</a>
+		</div>
 	</body>
 </html>
