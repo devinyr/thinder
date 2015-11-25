@@ -14,6 +14,10 @@ body {
   color: #e67200;
 }
 
+.submit-btn {
+  border: none;
+}
+
 .btn {
   display: block;
   width: 145px;
