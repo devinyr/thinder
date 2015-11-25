@@ -4,8 +4,8 @@ class Event(models.Model):
 	event_name = models.CharField(max_length=100)
 	restaurant_name = models.CharField(max_length=50)
 	resource_uri = models.CharField(max_length = 255)
-	time = models.TimeField
-	notes = models.CharField
+	time = models.TimeField()
+	notes = models.CharField(max_length = 255)
 	class Meta:
 		db_table = 'events'
 

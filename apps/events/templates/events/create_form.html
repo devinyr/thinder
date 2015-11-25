@@ -14,8 +14,9 @@
            {% csrf_token %}
         <input type='hidden' name='name' value='{{name}}'>
         <input type='hidden' name='resource_uri' value='{{resource_uri}}'>
-        <label>Reservation Time:<input type='time' name='start' ></label>
-        <textarea name'notes' placeholder='Anything else you want to say about this reservation?'></textarea>
+        <label>Reservation Name: <input type='text' name='event_name'></label>
+        <label>Reservation Time: <input type='time' name='start' ></label>
+        <textarea name='notes' placeholder='Anything else you want to say about this reservation?'></textarea>
         <input class='btn res' type='submit' value='make reservations'>
       </form>
     </div>
