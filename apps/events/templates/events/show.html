@@ -1,7 +1,15 @@
-<html>
-	<head>
-	</head>
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset='utf-8'>
+    {% load staticfiles %}
+    <title>Let Them Eat Turkey</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'events/css/style.css'%}">
+  </head>
 	<body>
-		<h1>This is where an event will be shown in more detail and a user will be able to join an event...</h1>
+    <div id="container">
+  		<h1>This is where an event will be shown in more detail and a user will be able to join or leave an event...</h1>
+      <h2>If user created this event should they also be able to delete it if no other user has joined?</h2>
+    </div>
 	</body>
 </html>
