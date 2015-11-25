@@ -1,24 +1,37 @@
-<html>
-	<head>
-
-	</head>
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset='utf-8'>
+    {% load staticfiles %}
+    <title>Index</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'events/css/style.css'%}">
+  </head>
 	<body>
-		{% for restaurant in restaurants.objects %}
-			<p><a href="{{restaurant.website_url}}">{{restaurant.name}}</a></p>
-		{% endfor %}
-		<br>
-		<h1>Search for restaurants in your city</h1>
-		<form action="{% url 'city' %}" method="post">
-			{% csrf_token %}
-			City: <select name="city">
-			<option value="Seattle">Seattle</option>
-			<option value="Bellevue">Bellevue</option>
-			<option value="Redmond">Redmond</option>
-			<option value="Bellingham">Bellingham</option>
-			<input type="submit" value="search">
-		</form>
-		{% for place in places.objects %}
-			<p><a href="{{place.website_url}}">{{place.name}}</a></p>
-		{% endfor %}
+		<div id="container">
+			<a class='btn header' href="{% url 'create' %}">Create an Event</a>
+			<a class="btn header" href='#'>Edit Profile</a>
+			<div id="you">
+				<h2>Your Reservations</h2>
+				<div class="event">
+					<h4>SEATTLE</h4>
+					<h4>Mudhoney</h4> <!-- link to event  page -->
+					<h4>Reservation time: 8:00pm</h4>
+					<h4>Number in party: 4</h4>
+					<h4>Description:</h4>
+					<a class="btn" href='#'>Leave</a>
+				</div>
+			</div>
+			<div id="other">
+				<h2>Other Reservations</h2>
+					<div class="event">
+						<h4>REDMOND</h4>
+					<h4>Mudhoney</h4> <!-- link to event  page -->
+					<h4>Reservation time: 8:00pm</h4>
+					<h4>Number in party: 4</h4>
+					<h4>Description:</h4>
+					<a class="btn" href='#'>Join</a>
+				</div>
+			</div>
+		</div>
 	</body>
 </html>

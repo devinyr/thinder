@@ -1,9 +1,34 @@
-<html>
-	<head>
-	</head>
-	<body>
-		<form action="" method="post">
-		
-		</form>
-	</body>
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset='utf-8'>
+    {% load staticfiles %}
+    <title>Create an Event</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'events/css/style.css'%}">
+  </head>
+  <body>
+    <div id="container">
+    {% for restaurant in restaurants.objects %}
+      <p><a href="{{restaurant.website_url}}">{{restaurant.name}}</a></p>
+    {% endfor %}
+    <br>
+    <h1>Welcome [User_Name]</h1>
+    <h3>To create a new event let's start by picking which location you'd like to have your party reservation. </h3>
+    <form action="{% url 'city' %}" method="post">
+      {% csrf_token %}
+      City: <select name="city">
+      <option value="Seattle">Seattle</option>
+      <option value="Bellevue">Bellevue</option>
+      <option value="Redmond">Redmond</option>
+      <option value="Bellingham">Bellingham</option>
+      <input type="submit" value="search">
+    </form>
+    <h3>Great {{request.session.city}} it is, here are the restaurants open on Thanksgiving. Go ahead and choose one (don't worry you can always change it later) to create your event.</h3>
+    <form></form>
+    {% for place in places.objects %}
+
+      <p><a href="{{place.website_url}}">{{place.name}}</a></p>
+    {% endfor %}
+    </div>
+  </body>
 </html>
