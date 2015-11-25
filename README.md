@@ -1,3 +1,4 @@
-Kelin & Colin & Emmet & Devi & Sarah were here
+Prerequisites to run locally:
 
-Yeah we all were here :)
+
+sudo pip install python-social-auth
