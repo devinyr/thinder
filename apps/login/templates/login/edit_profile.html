@@ -1,0 +1,28 @@
+<html>
+	<head>
+		<title>Thinder</title>
+		{% load staticfiles %}
+		<link rel="stylesheet" type="text/css" href="{% static 'events/css/style.css'%}">
+	</head>
+	<body>
+		<div id="container">
+			<a class="btn header" href="/events">Go to Events</a>
+			<a class="btn header" href="/logout">Logout</a>
+			<h1>Welcome {{request.session.user_firstname}}!</h1>
+			<br><hr><br>
+			<form action="/profile/update" method="POST">
+				{% csrf_token %}
+				<p>First Name: <input type="text" name="first_name" value="{{user.first_name}}"></p>
+				<p>Last Name: <input type="text" name="last_name" value="{{user.last_name}}"></p>
+				<p>Email: <input type="text" name="email" value="{{user.email}}"></p>
+				<p>Location: <input type="text" name="location" value="{{user.location}}"></p>
+				<p><input class="submit-btn btn" type="submit" value="Save"> <a class="btn" href="/profile">Cancel</a></p>
+			</form>
+			{% if messages %}
+				{% for message in messages %}
+					<p style="color: red;">{{message}}</p>
+				{% endfor %}
+			{% endif %}
+		</div>
+	</body>
+</html>

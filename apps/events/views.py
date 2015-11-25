@@ -15,7 +15,18 @@ def get_city(request):
 	return render(request, "events/create.html", places)
 
 def show(request):
-  pass
+	
+	url = "https://api.locu.com/v1_0/venue/search/?locality=Bellevue&region=Wa&category=restaurant&open_at=2015-11-26&api_key=ba6050865a98a654d2fa32c1b823f5769000dd77"
+	places = json.loads(requests.get(url).content)
+	data = places.get("objects") #Array of restraunts
+	uri_str = data[0].get("resource_uri") #Get first element need to modify
+	print uri_str
+	newurl = "https://api.locu.com" + uri_str + "?api_key=ba6050865a98a654d2fa32c1b823f5769000dd77"
+	context = {
+		"newurl" : newurl,
+	}
+	print newurl
+	return render(request, "events/show.html", context)
 
 def add(request):
 	try:
