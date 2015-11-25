@@ -37,7 +37,6 @@ def get_city(request):
 
 def show(request):
 	uri_str = request.session['resource_uri'] #Get first element need to modify
->>>>>>> dev_mck
 	print uri_str
 	newurl = "https://api.locu.com" + uri_str + "?api_key=ba6050865a98a654d2fa32c1b823f5769000dd77"
 
@@ -81,10 +80,7 @@ def make_reservation(request):
 
 	# should save event to db and redirect to show page with details. Sample menu items if available. (Need to hit api again with the resource uri)
 	# event = Event.objects.create()
-<<<<<<< HEAD
-	return render(request, 'events/show.html')
-=======
+
+	# return render(request, 'events/show.html')
+
 	return redirect('/events/show')
-
-
->>>>>>> dev_mck
