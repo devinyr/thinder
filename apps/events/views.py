@@ -4,7 +4,28 @@ from apps.events.models import Event, Reservation
 from apps.login.models import User
 
 def index(request):
-	return render(request, 'events/index.html')
+	return render(request, 'events/index.html', context)
+
+def redirected_home(request):
+	if User.objects.filter(email=request.user.email).count() > 0:
+		user = User.objects.get(email=request.user.email)
+	else:
+		user = User(first_name=request.user.first_name, last_name=request.user.last_name, username=request.user.username, email=request.user.email, last_login=request.user.last_login)
+		user.save()
+	request.session['user_id'] = user.id
+	request.session["user_firstname"] = user.first_name
+	my_reservations = Reservation.objects.filter(user=user)
+	events = []
+	for reservation in my_reservations:
+		event = Event.objects.get(id=reservation.event.id)
+		events.append(event)
+	other_reservations = Reservation.objects.exclude(user=user)
+	other_events = []
+	for reservation in other_reservations:
+		event = Event.objects.get(id=reservation.event.id)
+		other_events.append(event)
+	context = {'my_reservations': events, 'other_events': other_events, 'user': user}
+	return render(request, 'events/index.html', context)
 
 def get_city(request):
 	request.session['city'] = request.POST["city"]
@@ -15,7 +36,7 @@ def get_city(request):
 	return render(request, "events/create.html", places)
 
 def show(request):
-	
+
 	url = "https://api.locu.com/v1_0/venue/search/?locality=Bellevue&region=Wa&category=restaurant&open_at=2015-11-26&api_key=ba6050865a98a654d2fa32c1b823f5769000dd77"
 	places = json.loads(requests.get(url).content)
 	data = places.get("objects") #Array of restraunts
@@ -60,5 +81,3 @@ def make_reservation(request):
 	# should save event to db and redirect to show page with details. Sample menu items if available. (Need to hit api again with the resource uri)
 	# event = Event.objects.create()
 	return render(request, 'events/show.html')
-
-
