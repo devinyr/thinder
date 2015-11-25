@@ -12,7 +12,6 @@
         <h2>Reservations at {{name}}</h2>
         <h4>in {{request.session.city}}</h4>
            {% csrf_token %}
-        <input type='hidden' name='has_menu' value='{{has_menu}}'>
         <input type='hidden' name='name' value='{{name}}'>
         <input type='hidden' name='resource_uri' value='{{resource_uri}}'>
         <label>Reservation Time:<input type='time' name='start' ></label>

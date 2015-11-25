@@ -36,11 +36,10 @@
         <tr>
           <form action="{% url 'create'%}" method='post'>
            {% csrf_token %}
-            <input type='hidden' name='has_menu' value='{{place.has_menu}}'>
             <input type='hidden' name='name' value='{{place.name}}'>
             <input type='hidden' name='resource_uri' value='{{place.resource_uri}}'>
             <td>{{place.name}}</td>
-            <td><input class='btn' type='submit' value='Je voudrais manger ici'></td>
+            <td><input class='btn' type='submit' value='Make Reservation'></td>
           </form>
         </tr>
         {% endfor %}
