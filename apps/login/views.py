@@ -17,5 +17,5 @@ def home(request):
 
 def logout(request):
 	auth_logout(request)
-	del request.session['user_id']
+	request.session.clear()
 	return redirect('/')
