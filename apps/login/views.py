@@ -5,19 +5,29 @@ from django.contrib import messages
 from models import *
 import string
 
+# from apps.events.models import Event, Reservation
+# from apps.login.models import User
+
 def index(request):
 	return render(request, 'login/index.html')
 
 def home(request):
-	if User.objects.filter(email=request.user.email).count() > 0:
-		user = User.objects.get(email=request.user.email)
-	else:
-		user = User(first_name=request.user.first_name, last_name=request.user.last_name, username=request.user.username, email=request.user.email, last_login=request.user.last_login)
-		user.save()
-	request.session['user_id'] = user.id
-	request.session["user_firstname"] = user.first_name
-	context = {'user': user}
-	return render(request, 'events/index.html', context)
+	return redirect('/events/my_events')
+	# if User.objects.filter(email=request.user.email).count() > 0:
+	# 	user = User.objects.get(email=request.user.email)
+	# else:
+	# 	user = User(first_name=request.user.first_name, last_name=request.user.last_name, username=request.user.username, email=request.user.email, last_login=request.user.last_login)
+	# 	user.save()
+	# request.session['user_id'] = user.id
+	# request.session["user_firstname"] = user.first_name
+	# my_reservations = Reservation.objects.filter(user=user)
+	# events = []
+	# for reservation in my_reservations:
+	# 	print 'we are in my_reservations'
+	# 	event = Event.objects.get(id=reservation.event.id)
+	# 	events.push(event)
+	# context = {'my_reservations': events, 'user': user}
+	# return render(request, 'events/index.html', context)
 
 def profile(request):
 	user = User.objects.get(id=request.session['user_id'])
