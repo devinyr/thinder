@@ -34,7 +34,18 @@ def create(request):
 	return render(request, 'events/create_form.html', content)
 
 def commit(request):
-	event = Event()
+	event = Event(event_name=request.POST['event_name'], restaurant_name=request.POST['name'], resource_uri=request.POST['resource_uri'],time=request.POST['start'], notes = request.POST['notes'])
+	print event
+	print '************************'
+	event.save()
+	event_pk = Event.objects.all().order_by('pk'[:1])
+	print event.id
+	return render(request, 'events/show.html', event.id)
+
+def make_reservation(request):
+	pass
+
+
 	# should save event to db and redirect to show page with details. Sample menu items if available. (Need to hit api again with the resource uri)
 	# event = Event.objects.create()
 	return render(request, 'events/show.html')
