@@ -14,25 +14,39 @@
       <a class="btn header" href='/logout'>Logout</a>
 			<div id="you">
 				<h2>Your Reservations</h2>
-				<div class="event">
+				<!-- <div class="event">
 					<h4>SEATTLE</h4>
-					<h4>Mudhoney</h4> <!-- link to event  page -->
+					<h4>Mudhoney</h4>
 					<h4>Reservation time: 8:00pm</h4>
 					<h4>Number in party: 4</h4>
 					<h4>Description:</h4>
 					<a class="btn" href='#'>Leave</a>
-				</div>
+				</div> -->
+        {% for event in my_reservations %}
+          <div class="event">
+            <h4>{{event.restaurant_name}}</h4>
+            <h4>Reservation Time: {{event.time}}</h4>
+            <a class="btn" href="#">Leave</a>
+          </div>
+        {% endfor %}
 			</div>
 			<div id="other">
-				<h2>Other Reservations</h2>
-					<div class="event">
+				<h2>Other Events</h2>
+					<!-- <div class="event">
 					<h4>REDMOND</h4>
-					<h4>Mudhoney</h4> <!-- link to event  page -->
+					<h4>Mudhoney</h4>
 					<h4>Reservation time: 8:00pm</h4>
 					<h4>Number in party: 4</h4>
 					<h4>Description:</h4>
 					<a class="btn" href='#'>Join</a>
-				</div>
+				</div> -->
+        {% for event in other_events %}
+          <div class="event">
+            <h4>{{event.restaurant_name}}</h4>
+            <h4>Reservation Time: {{event.time}}</h4>
+            <a class="btn" href="#">Join</a>
+          </div>
+        {% endfor %}
 			</div>
 		</div>
 		<img id="turkey" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7j55S7xr9tucX3ixJAkBl3Rt_0EF7zDyADAIUYnQP98xGothU">
