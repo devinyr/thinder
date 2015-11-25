@@ -8,9 +8,10 @@
   </head>
 	<body>
 		<div id="container">
-			<h1>Welcome {{request.session.user_firstname}}
+			<h1>Welcome {{request.session.user_firstname}}</h1>
 			<a class='btn header' href="{% url 'add' %}">Create an Event</a>
-			<a class="btn header" href='#'>Edit Profile</a>
+			<a class="btn header" href='/profile'>Profile</a>
+      <a class="btn header" href='/logout'>Logout</a>
 			<div id="you">
 				<h2>Your Reservations</h2>
 				<div class="event">
