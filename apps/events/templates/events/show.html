@@ -8,10 +8,17 @@
   </head>
 	<body>
     <div id="container">
-    <a href="{{newurl}}">Restraunt</a>
-
-  		<h1>This is where an event will be shown in more detail and a user will be able to join or leave an event...</h1>
-      <h2>If user created this event should they also be able to delete it if no other user has joined?</h2>
+      <div class="info">
+        <h1>{{request.session.event_name}}</h1>
+        {% for something in event.objects %}
+        <br>
+        <h1>{{something.name}}</h1>
+        <h2>{{something.street_address}}</h2>
+        <h2>{{something.locality}}, {{something.region}} {{something.postal_code}}</h2>
+        <h3><a target='_blank' href="{{something.website_url}}">{{something.website_url}}</a></h3>
+      {% endfor %}
+        <h4 class='notes'>{{request.session.notes}}</h4>
+      </div>
     </div>
 	</body>
 </html>

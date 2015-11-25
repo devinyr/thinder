@@ -46,6 +46,10 @@ body {
   margin-left: 410px;
 }
 
+.notes {
+  border: 1px solid black;
+}
+
 form  {
   text-align: center;
 }

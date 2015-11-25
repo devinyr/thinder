@@ -9,4 +9,5 @@ urlpatterns = patterns ('',
   url(r'^create', views.create, name='create'),
   url(r'^commit', views.commit, name='commit'),
   url(r'^my_events$', views.redirected_home, name='redirected_home')
+  url(r'^make_reservation', views.make_reservation, name='reservation'),
 )
