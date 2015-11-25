@@ -12,9 +12,14 @@ def home(request):
 		user = User(first_name=request.user.first_name, last_name=request.user.last_name, username=request.user.username, email=request.user.email, last_login=request.user.last_login)
 		user.save()
 	request.session['user_id'] = user.id
-	request.session["user_firstname"] = user.first_name 
+	request.session["user_firstname"] = user.first_name
 	context = {'user': user}
 	return render(request, 'events/index.html', context)
+
+def profile(request):
+	user = User.objects.get(id=request.session['user_id'])
+	context = {'user': user}
+	return render(request, 'login/profile.html', context)
 
 def logout(request):
 	auth_logout(request)

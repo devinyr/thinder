@@ -5,4 +5,5 @@ urlpatterns = patterns ('',
 	url(r'^$', views.index, name='index'),
 	url(r'^logout$', views.logout, name='logout'),
 	url(r'^home$', views.home, name='home'),
+	url(r'^profile$', views.profile, name='profile'),
 )
