@@ -15,21 +15,17 @@ def get_city(request):
 	return render(request, "events/create.html", places)
 
 def show(request):
-	try:
-		request.session['resource_uri']
-	except:
-
 	print 'IN SHOW************'
-	places = json.loads(requests.get(url).content)
-	data = places.get("objects") #Array of restraunts
-	uri_str = data[0].get("resource_uri") #Get first element need to modify
+	uri_str = request.session['resource_uri'] #Get first element need to modify
 	print uri_str
 	newurl = "https://api.locu.com" + uri_str + "?api_key=ba6050865a98a654d2fa32c1b823f5769000dd77"
-	context = {
-		"newurl" : newurl,
-	}
-	print newurl
-	return render(request, "events/show.html", context)
+
+	content = {
+		"event": json.loads(requests.get(newurl).content)
+		}
+	print content
+
+	return render(request, "events/show.html", content)
 
 def add(request):
 	try:
@@ -44,7 +40,6 @@ def create(request):
 		'name' 					: request.POST['name'],
 		'resource_uri'	:	request.POST['resource_uri']
 	}
-	print content
 	return render(request, 'events/create_form.html', content)
 
 def commit(request):
@@ -53,8 +48,8 @@ def commit(request):
 	event_pk = Event.objects.all().order_by('pk'[:1])
 	request.session['event_id'] = event.id
 	request.session['resource_uri'] = event.resource_uri
-	print request.session['event_id']
-	print request.session['resource_uri']
+	request.session['event_name'] = event.event_name
+	request.session['notes'] = event.notes
 	return redirect('/events/make_reservation')
 
 def make_reservation(request):
@@ -65,6 +60,6 @@ def make_reservation(request):
 
 	# should save event to db and redirect to show page with details. Sample menu items if available. (Need to hit api again with the resource uri)
 	# event = Event.objects.create()
-	return render(request, 'events/show.html')
+	return redirect('/events/show')
 
 
