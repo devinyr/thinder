@@ -8,6 +8,7 @@
   </head>
 	<body>
 		<div id="container">
+			<h1>Welcome {{request.session.user_firstname}}
 			<a class='btn header' href="{% url 'add' %}">Create an Event</a>
 			<a class="btn header" href='#'>Edit Profile</a>
 			<div id="you">

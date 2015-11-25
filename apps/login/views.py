@@ -12,8 +12,9 @@ def home(request):
 		user = User(first_name=request.user.first_name, last_name=request.user.last_name, username=request.user.username, email=request.user.email, last_login=request.user.last_login)
 		user.save()
 	request.session['user_id'] = user.id
+	request.session["user_firstname"] = user.first_name 
 	context = {'user': user}
-	return render(request, 'login/home.html', context)
+	return render(request, 'events/index.html', context)
 
 def logout(request):
 	auth_logout(request)
