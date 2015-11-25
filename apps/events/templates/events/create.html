@@ -24,11 +24,28 @@
       <input type="submit" value="search">
     </form>
     <h3>Great {{request.session.city}} it is, here are the restaurants open on Thanksgiving. Go ahead and choose one (don't worry you can always change it later) to create your event.</h3>
-    <form></form>
-    {% for place in places.objects %}
-
-      <p><a href="{{place.website_url}}">{{place.name}}</a></p>
-    {% endfor %}
+    <table>
+      <thead>
+        <tr>
+          <th>Restaurants in</th>
+          <th>{{request.session.city}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for place in places.objects %}
+        <tr>
+          <form action="{% url 'create'%}" method='post'>
+           {% csrf_token %}
+            <input type='hidden' name='has_menu' value='{{place.has_menu}}'>
+            <input type='hidden' name='name' value='{{place.name}}'>
+            <input type='hidden' name='resource_uri' value='{{place.resource_uri}}'>
+            <td>{{place.name}}</td>
+            <td><input class='btn' type='submit' value='Je voudrais manger ici'></td>
+          </form>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
     </div>
   </body>
 </html>

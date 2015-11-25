@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect
 import requests, json
+# from apps.events import Event, Reservation
 
 def index(request):
-	pass
+	return render(request, 'events/index.html')
 
 def get_city(request):
 	request.session['city'] = request.POST["city"]
@@ -15,5 +16,23 @@ def get_city(request):
 def show(request):
   pass
 
-def create(request):
+def add(request):
+	del request.session['city']
 	return render(request, 'events/create.html')
+
+def create(request):
+	print request.POST
+	content = {
+		'name' 					: request.POST['name'],
+		'has_menu'			:	request.POST['has_menu'],
+		'resource_uri'	:	request.POST['resource_uri']
+	}
+	print content
+	return render(request, 'events/create_form.html', content)
+
+def commit(request):
+	# should save event to db and redirect to show page with details. Sample menu items if available. (Need to hit api again with the resource uri)
+	# event = Event.objects.create()
+	return render(request, 'events/show.html')
+
+

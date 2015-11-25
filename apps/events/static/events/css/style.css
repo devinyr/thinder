@@ -24,9 +24,32 @@
 .header {
   margin-left: 650px;
 }
+
 .event  {
   display: inline-block;
   width: 200px;
   height: 200px;
   border: 1px solid black;
+}
+.res  {
+  margin-left: 410px;
+}
+
+form  {
+  text-align: center;
+}
+
+tr, td {
+  width: 250px;
+}
+
+textarea, label {
+  display: block;
+  margin: 5px;
+}
+
+textarea {
+  margin-left: 380px;
+  width: 220px;
+  height: 50px;
 }

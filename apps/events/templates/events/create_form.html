@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset='utf-8'>
+    {% load staticfiles %}
+    <title>My party, my rules</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'events/css/style.css'%}">
+  </head>
+  <body>
+    <div id="container">
+      <form action="{% url 'commit' %}" method='POST'>
+        <h2>Reservations at {{name}}</h2>
+        <h4>in {{request.session.city}}</h4>
+           {% csrf_token %}
+        <input type='hidden' name='has_menu' value='{{has_menu}}'>
+        <input type='hidden' name='name' value='{{name}}'>
+        <input type='hidden' name='resource_uri' value='{{resource_uri}}'>
+        <label>Reservation Time:<input type='time' name='start' ></label>
+        <textarea name'notes' placeholder='Anything else you want to say about this reservation?'></textarea>
+        <input class='btn res' type='submit' value='make reservations'>
+      </form>
+    </div>
+  </body>
+</html>
+
