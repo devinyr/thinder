@@ -3,6 +3,10 @@
   padding: 0px;
 }
 
+body {
+  margin-top: 80px;
+}
+
 #container {
   width: 970px;
   margin: 0px auto;
